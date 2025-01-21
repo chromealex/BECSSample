@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c23d484dd87431ab96b0d060a518f1, type: 3}
+  m_Name: TestConfig
+  m_EditorClassIdentifier: 
+  baseConfig: {fileID: 0}
+  data:
+    components:
+    - rid: 5898424070305480715
+    - rid: 5898424070305480716
+    - rid: 5898424070305480717
+    - rid: 5898424070305480718
+  sharedData:
+    components: []
+  staticData:
+    components:
+    - rid: 5898424070305480719
+  dataInitialize:
+    components:
+    - rid: 5898424070305480719
+  aspects:
+    components: []
+  collectionsData:
+    nextId: 0
+    items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5898424070305480715
+      type: {class: TestConfigComponent, ns: Sample, asm: Sample}
+      data:
+        a: 5
+    - rid: 5898424070305480716
+      type: {class: LocalPositionComponent, ns: ME.BECS.Transforms, asm: ME.BECS.Transforms}
+      data:
+        value:
+          x: 0
+          y: 0
+          z: 0
+    - rid: 5898424070305480717
+      type: {class: LocalRotationComponent, ns: ME.BECS.Transforms, asm: ME.BECS.Transforms}
+      data:
+        value:
+          value:
+            x: 0
+            y: 0
+            z: 0
+            w: 1
+    - rid: 5898424070305480718
+      type: {class: LocalScaleComponent, ns: ME.BECS.Transforms, asm: ME.BECS.Transforms}
+      data:
+        value:
+          x: 1
+          y: 1
+          z: 1
+    - rid: 5898424070305480719
+      type: {class: InstantiateViewComponent, ns: ME.BECS.Views, asm: ME.BECS.Views}
+      data:
+        view:
+          viewSource:
+            providerId: 2
+            prefabId: 4

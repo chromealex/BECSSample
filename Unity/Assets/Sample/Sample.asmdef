@@ -1,0 +1,22 @@
+{
+    "name": "Sample",
+    "rootNamespace": "",
+    "references": [
+        "ME.BECS",
+        "ME.BECS.Features",
+        "ME.BECS.Transforms",
+        "Unity.Collections",
+        "Unity.Burst",
+        "Unity.Mathematics",
+        "ME.BECS.Network"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

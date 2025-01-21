@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ComponentGroupsXml xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <nextId>8</nextId>
+    <Items>
+        <Item>
+            <id>1</id>
+            <type>ME.BECS.FogOfWar.FogOfWarComponentGroup, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarRevealerIsRectTag, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarRevealerIsPartialTag, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarStaticComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarShadowCopyComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarHasShadowCopyComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarShadowCopyWasVisibleAnytimeTag, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarShadowCopyPointsComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarSectorRevealerComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarShadowCopyRequiredComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarRevealerPartialComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarShadowCopyWasVisibleTag, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarRevealerComponent, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarRevealerIsRangeTag, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.FogOfWar.FogOfWarRevealerIsSectorTag, ME.BECS.FogOfWar, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+        <Item>
+            <id>2</id>
+            <type>ME.BECS.Units.UnitComponentGroup, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.Units.DamageTookComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.NavAgentRuntimeComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.IsCommandGroupDirty, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.IsUnitStaticComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.CommandGroupComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.UnitSelectionGroupComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.TimeToBuildComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.DamageTookEvent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.UnitLookAtComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.UnitQuadSizeComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.PathFollowComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.UnitHealthComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.UnitHoldComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.SelectionGroupComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.NavAgentRuntimeSpeedComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.NavAgentComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Units.UnitCommandGroupComponent, ME.BECS.Units, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+        <Item>
+            <id>3</id>
+            <type>ME.BECS.Views.ViewsComponentGroup, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.Views.IsViewRequested, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Views.InstantiateAvatarViewComponent, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Views.MeshRendererComponent, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Views.ViewCustomIdComponent, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Views.MeshFilterComponent, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Views.ViewComponent, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Views.InstantiateViewComponent, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Views.AssignViewComponent, ME.BECS.Views, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+        <Item>
+            <id>4</id>
+            <type>ME.BECS.DestroyComponentGroup, ME.BECS.Destroy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.DestroyWithTicks, ME.BECS.Destroy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.DestroyWithLifetime, ME.BECS.Destroy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+        <Item>
+            <id>5</id>
+            <type>ME.BECS.Players.UnitOwnerComponentGroup, ME.BECS.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.Players.OwnerComponent, ME.BECS.Players, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+        <Item>
+            <id>6</id>
+            <type>ME.BECS.Effects.EffectComponentGroup, ME.BECS.Effects, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.Effects.EffectComponent, ME.BECS.Effects, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+        <Item>
+            <id>7</id>
+            <type>ME.BECS.Commands.CommandComponentsGroup, ME.BECS.Commands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.Commands.CommandAttack, ME.BECS.Commands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Commands.UnitAttackCommandComponent, ME.BECS.Commands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Commands.CommandBuild, ME.BECS.Commands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Commands.BuildingInProgress, ME.BECS.Commands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Commands.CommandMove, ME.BECS.Commands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Commands.BuildInProgress, ME.BECS.Commands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+        <Item>
+            <id>8</id>
+            <type>ME.BECS.Transforms.TransformComponentGroup, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+            <Components>
+                <Component>
+                    <type>ME.BECS.Transforms.LocalRotationComponent, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Transforms.WorldMatrixComponent, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Transforms.LocalPositionComponent, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Transforms.ChildrenComponent, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Transforms.LocalScaleComponent, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Transforms.IsFirstLevelComponent, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+                <Component>
+                    <type>ME.BECS.Transforms.ParentComponent, ME.BECS.Transforms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</type>
+                </Component>
+            </Components>
+        </Item>
+    </Items>
+    <nextAspectId>0</nextAspectId>
+</ComponentGroupsXml>

@@ -1,0 +1,10 @@
+{
+                        "name": "ME.BECS.Gen.Editor",
+                        "references": [
+                            "ME.BECS.Tests","ME.BECS.FogOfWar","Sample","ME.BECS.Trees","ME.BECS.Units","ME.BECS.Destroy","ME.BECS.UnitsHealthBars","ME.BECS.Players","ME.BECS","ME.BECS.Bullets","ME.BECS.Features","ME.BECS.Pathfinding","ME.BECS.Commands","ME.BECS.Transforms","ME.BECS.Attack","ME.BECS.Effects","ME.BECS.Views","ME.BECS.UI","ME.BECS.Network","ME.BECS.Network.Editor","ME.BECS.Views.Editor","ME.BECS.Features.Editor","ME.BECS.Editor","UnityEngine.TestRunner","UnityEditor.TestRunner","Unity.Burst","Unity.Collections","Unity.Mathematics","Unity.PerformanceTesting","Unity.RenderPipelines.Universal.Runtime","Unity.RenderPipelines.Core.Runtime","ME.BECS.WorldHelper","ME.BECS.SceneEntityView","ME.BECS.ObjectReference.Runtime","PhotonUnityNetworking","PhotonRealtime","Ragon.Runtime","ME.BECS.Units.Editor"
+                            ],
+                        "includePlatforms": [
+                            "Editor"
+                        ],
+                        "allowUnsafeCode": true
+                    }

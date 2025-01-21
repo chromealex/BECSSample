@@ -1,0 +1,7 @@
+{
+                        "name": "ME.BECS.Gen.Runtime",
+                        "references": [
+                            "ME.BECS.FogOfWar","Sample","ME.BECS.Trees","ME.BECS.Units","ME.BECS.Destroy","ME.BECS.UnitsHealthBars","ME.BECS.Players","ME.BECS","ME.BECS.Bullets","ME.BECS.Features","ME.BECS.Pathfinding","ME.BECS.Commands","ME.BECS.Transforms","ME.BECS.Attack","ME.BECS.Effects","ME.BECS.Views","ME.BECS.UI","ME.BECS.Network","Unity.Burst","Unity.Mathematics","Unity.RenderPipelines.Universal.Runtime","Unity.RenderPipelines.Core.Runtime","ME.BECS.WorldHelper","Unity.Collections","ME.BECS.SceneEntityView","ME.BECS.ObjectReference.Runtime","PhotonUnityNetworking","PhotonRealtime","Ragon.Runtime"
+                            ],
+                        "allowUnsafeCode": true
+                    }
