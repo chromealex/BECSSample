@@ -2661,7 +2661,7 @@ namespace ME.BECS {
                         sourceId = 6,
                     }
                     ,
-                    count = 10000,
+                    count = 100,
                 }
                 ;
                 TSystemGraph.Register<Sample.SpawnEntitiesSystem>(1001, item);
