@@ -619,7 +619,6 @@ namespace ME.BECS {
             EarlyInit.DoComponents<ME.BECS.Pathfinding.UpdateGraphSystem.UpdateGraphMaskJob, ME.BECS.Pathfinding.GraphMaskComponent, ME.BECS.Pathfinding.GraphMaskRuntimeComponent>();
             EarlyInit.DoComponents<ME.BECS.Commands.CommandBuildUpdateSystem.CompleteJob, ME.BECS.Commands.BuildingInProgress>();
             EarlyInit.DoComponents<ME.BECS.Commands.CommandBuildUpdateSystem.UpdateProgressJob, ME.BECS.Commands.BuildInProgress>();
-            EarlyInit.DoParallelForAspect<ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job, ME.BECS.Units.UnitAspect>();
             EarlyInit.DoAspect<ME.BECS.FogOfWar.CreateSystem.CleanUpJob, ME.BECS.Players.TeamAspect>();
             EarlyInit.DoAspect<ME.BECS.FogOfWar.CreateSystem.CreateJob, ME.BECS.Players.TeamAspect>();
             EarlyInit.DoAspect<Sample.FilterEntitiesSystem.JobMove, ME.BECS.Transforms.TransformAspect>();
@@ -628,6 +627,7 @@ namespace ME.BECS {
             EarlyInit.DoAspect<ME.BECS.Units.DestroySystem.DestroyJob, ME.BECS.Units.UnitAspect>();
             EarlyInit.DoAspect<ME.BECS.Units.SteeringWithAvoidanceSystem.Job, ME.BECS.Transforms.TransformAspect, ME.BECS.Units.UnitAspect, ME.BECS.QuadTreeQueryAspect>();
             EarlyInit.DoAspect<ME.BECS.Units.SteeringSystem.Job, ME.BECS.Transforms.TransformAspect, ME.BECS.Units.UnitAspect, ME.BECS.QuadTreeQueryAspect>();
+            EarlyInit.DoAspect<ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job, ME.BECS.Units.UnitAspect>();
             EarlyInit.DoAspect<ME.BECS.Bullets.FlySystem.FlyJob, ME.BECS.Bullets.BulletAspect, ME.BECS.Transforms.TransformAspect>();
             EarlyInit.DoAspect<ME.BECS.Bullets.DestroySystem.DestroyJob, ME.BECS.Bullets.BulletAspect, ME.BECS.QuadTreeQueryAspect, ME.BECS.Transforms.TransformAspect>();
             EarlyInit.DoAspect<ME.BECS.Pathfinding.FollowPathSystem.SpeedDownOnHoldJob, ME.BECS.Units.UnitAspect>();
@@ -3026,7 +3026,7 @@ namespace ME.BECS {
         
         #if ENABLE_UNITY_COLLECTIONS_CHECKS && ENABLE_BECS_COLLECTIONS_CHECKS
         public struct JobDebugData1 { // ME.BECS.FogOfWar.UpdateSystem+RevealRectPartialJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRectPartialJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Transforms.ParentComponent> c0;
@@ -3042,7 +3042,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData2 { // ME.BECS.FogOfWar.ShadowCopyUpdateSystem+UpdatePointsJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.ShadowCopyUpdateSystem.UpdatePointsJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.FogOfWar.FogOfWarShadowCopyComponent> c0;
@@ -3061,7 +3061,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Views.IsViewRequested> ME_BECS_Views_IsViewRequested;
         }
         public struct JobDebugData3 { // ME.BECS.FogOfWar.ShadowCopyUpdateSystem+UpdateRectJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.ShadowCopyUpdateSystem.UpdateRectJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.FogOfWar.FogOfWarShadowCopyComponent> c0;
@@ -3081,7 +3081,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Views.IsViewRequested> ME_BECS_Views_IsViewRequested;
         }
         public struct JobDebugData4 { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeSectorJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangeSectorJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent> c0;
@@ -3096,7 +3096,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData5 { // ME.BECS.FogOfWar.UpdateSystem+RevealRangePartialJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangePartialJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Transforms.ParentComponent> c0;
@@ -3112,7 +3112,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData6 { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangeJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent> c0;
@@ -3125,7 +3125,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData7 { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeSectorPartialJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangeSectorPartialJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Transforms.ParentComponent> c0;
@@ -3142,7 +3142,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData8 { // ME.BECS.FogOfWar.UpdateSystem+RevealRectJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRectJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent> c0;
@@ -3155,19 +3155,19 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData9 { // ME.BECS.FogOfWar.ShadowCopySystem+CreateJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.ShadowCopySystem.CreateJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
         }
         public struct JobDebugData10 { // Sample.FilterEntitiesSystem+JobSetTest
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public Sample.FilterEntitiesSystem.JobSetTest jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<Sample.TestComponent> c0;
             public SafetyComponentContainerWO<Sample.TestComponent> Sample_TestComponent;
         }
         public struct JobDebugData11 { // ME.BECS.Units.HitSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.HitSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Units.DamageTookComponent> c0;
@@ -3175,14 +3175,14 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
         }
         public struct JobDebugData12 { // ME.BECS.Views.Jobs+JobAddToScene
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Views.Jobs.JobAddToScene jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Views.IsViewRequested> c0;
             public SafetyComponentContainerRO<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData13 { // ME.BECS.Views.Jobs+JobAssignViews
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Views.Jobs.JobAssignViews jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Views.AssignViewComponent> c0;
@@ -3190,14 +3190,14 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData14 { // ME.BECS.Views.Jobs+JobRemoveFromScene
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Views.Jobs.JobRemoveFromScene jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Views.ViewComponent> c0;
             public SafetyComponentContainerRW<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData15 { // ME.BECS.DestroyWithTicksSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.DestroyWithTicksSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.DestroyWithTicks> c0;
@@ -3210,7 +3210,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
         public struct JobDebugData16 { // ME.BECS.DestroyWithLifetimeSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.DestroyWithLifetimeSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.DestroyWithLifetime> c0;
@@ -3223,14 +3223,14 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
         public struct JobDebugData17 { // ME.BECS.Pathfinding.UpdateGraphSystem+ResetPathJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.UpdateGraphSystem.ResetPathJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Pathfinding.TargetPathComponent> c0;
             public SafetyComponentContainerRO<ME.BECS.Pathfinding.TargetPathComponent> ME_BECS_Pathfinding_TargetPathComponent;
         }
         public struct JobDebugData18 { // ME.BECS.Pathfinding.BuildPathSystem+UpdatePathJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.BuildPathSystem.UpdatePathJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Pathfinding.TargetComponent> c0;
@@ -3240,7 +3240,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Pathfinding.TargetPathComponent> ME_BECS_Pathfinding_TargetPathComponent;
         }
         public struct JobDebugData19 { // ME.BECS.Pathfinding.UpdateGraphSystem+UpdateGraphMaskJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.UpdateGraphSystem.UpdateGraphMaskJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Pathfinding.GraphMaskComponent> c0;
@@ -3255,14 +3255,14 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
         public struct JobDebugData20 { // ME.BECS.Commands.CommandBuildUpdateSystem+CompleteJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandBuildUpdateSystem.CompleteJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Commands.BuildingInProgress> c0;
             public SafetyComponentContainerRW<ME.BECS.Commands.BuildingInProgress> ME_BECS_Commands_BuildingInProgress;
         }
         public struct JobDebugData21 { // ME.BECS.Commands.CommandBuildUpdateSystem+UpdateProgressJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandBuildUpdateSystem.UpdateProgressJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Commands.BuildInProgress> c0;
@@ -3280,36 +3280,22 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
             public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
-        public struct JobDebugData22 { // ME.BECS.UnitsHealthBars.DrawHealthBarsSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
-            [NativeDisableUnsafePtrRestriction] public ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job jobData;
-            [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
-            public ME.BECS.Units.UnitAspect a0;
-            public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
-            public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarStaticComponent> ME_BECS_FogOfWar_FogOfWarStaticComponent;
-            public SafetyComponentContainerRO<ME.BECS.Players.OwnerComponent> ME_BECS_Players_OwnerComponent;
-            public SafetyComponentContainerRO<ME.BECS.Players.PlayerComponent> ME_BECS_Players_PlayerComponent;
-            public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
-            public SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
-            public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
-            public SafetyComponentContainerRO<ME.BECS.Views.CameraComponent> ME_BECS_Views_CameraComponent;
-        }
-        public struct JobDebugData23 { // ME.BECS.FogOfWar.CreateSystem+CleanUpJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData22 { // ME.BECS.FogOfWar.CreateSystem+CleanUpJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.CreateSystem.CleanUpJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Players.TeamAspect a0;
             public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
         }
-        public struct JobDebugData24 { // ME.BECS.FogOfWar.CreateSystem+CreateJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData23 { // ME.BECS.FogOfWar.CreateSystem+CreateJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.CreateSystem.CreateJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Players.TeamAspect a0;
             public SafetyComponentContainerRW<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
         }
-        public struct JobDebugData25 { // Sample.FilterEntitiesSystem+JobMove
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData24 { // Sample.FilterEntitiesSystem+JobMove
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public Sample.FilterEntitiesSystem.JobMove jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3318,8 +3304,8 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.LocalScaleComponent> ME_BECS_Transforms_LocalScaleComponent;
             public SafetyComponentContainerRO<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
-        public struct JobDebugData26 { // ME.BECS.QuadTreeQuerySystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData25 { // ME.BECS.QuadTreeQuerySystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.QuadTreeQuerySystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.QuadTreeQueryAspect a0;
@@ -3328,8 +3314,8 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.QuadTreeResult> ME_BECS_QuadTreeResult;
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
-        public struct JobDebugData27 { // ME.BECS.QuadTreeInsertSystem+CollectJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData26 { // ME.BECS.QuadTreeInsertSystem+CollectJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.QuadTreeInsertSystem.CollectJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.QuadTreeAspect a0;
@@ -3337,8 +3323,8 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.QuadTreeElement> ME_BECS_QuadTreeElement;
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
-        public struct JobDebugData28 { // ME.BECS.Units.DestroySystem+DestroyJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData27 { // ME.BECS.Units.DestroySystem+DestroyJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.DestroySystem.DestroyJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitAspect a0;
@@ -3361,8 +3347,8 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
             public SafetyComponentContainerRW<ME.BECS.Units.UnitSelectionGroupComponent> ME_BECS_Units_UnitSelectionGroupComponent;
         }
-        public struct JobDebugData29 { // ME.BECS.Units.SteeringWithAvoidanceSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData28 { // ME.BECS.Units.SteeringWithAvoidanceSystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.SteeringWithAvoidanceSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3380,8 +3366,8 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
             public SafetyComponentContainerRO<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
-        public struct JobDebugData30 { // ME.BECS.Units.SteeringSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData29 { // ME.BECS.Units.SteeringSystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.SteeringSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3398,8 +3384,22 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
             public SafetyComponentContainerRO<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
+        public struct JobDebugData30 { // ME.BECS.UnitsHealthBars.DrawHealthBarsSystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
+            [NativeDisableUnsafePtrRestriction] public ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job jobData;
+            [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
+            public ME.BECS.Units.UnitAspect a0;
+            public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
+            public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarStaticComponent> ME_BECS_FogOfWar_FogOfWarStaticComponent;
+            public SafetyComponentContainerRO<ME.BECS.Players.OwnerComponent> ME_BECS_Players_OwnerComponent;
+            public SafetyComponentContainerRO<ME.BECS.Players.PlayerComponent> ME_BECS_Players_PlayerComponent;
+            public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
+            public SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
+            public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
+            public SafetyComponentContainerRO<ME.BECS.Views.CameraComponent> ME_BECS_Views_CameraComponent;
+        }
         public struct JobDebugData31 { // ME.BECS.Bullets.FlySystem+FlyJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Bullets.FlySystem.FlyJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Bullets.BulletAspect a0;
@@ -3414,7 +3414,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData32 { // ME.BECS.Bullets.DestroySystem+DestroyJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Bullets.DestroySystem.DestroyJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Bullets.BulletAspect a0;
@@ -3442,7 +3442,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
         }
         public struct JobDebugData33 { // ME.BECS.Pathfinding.FollowPathSystem+SpeedDownOnHoldJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathSystem.SpeedDownOnHoldJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitAspect a0;
@@ -3450,7 +3450,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.NavAgentRuntimeSpeedComponent> ME_BECS_Units_NavAgentRuntimeSpeedComponent;
         }
         public struct JobDebugData34 { // ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem+PathFollowJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem.PathFollowJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3475,7 +3475,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
         public struct JobDebugData35 { // ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem+SpeedDownOnHoldJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem.SpeedDownOnHoldJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitAspect a0;
@@ -3483,7 +3483,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.NavAgentRuntimeSpeedComponent> ME_BECS_Units_NavAgentRuntimeSpeedComponent;
         }
         public struct JobDebugData36 { // ME.BECS.Pathfinding.FollowPathSystem+PathFollowJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathSystem.PathFollowJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3508,7 +3508,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
         public struct JobDebugData37 { // ME.BECS.Pathfinding.LookAtSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.LookAtSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3520,7 +3520,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitLookAtComponent> ME_BECS_Units_UnitLookAtComponent;
         }
         public struct JobDebugData38 { // ME.BECS.Commands.CommandMoveSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandMoveSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitCommandGroupAspect a0;
@@ -3543,7 +3543,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData39 { // ME.BECS.Commands.CommandAttackSystem+MoveJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandAttackSystem.MoveJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitCommandGroupAspect a0;
@@ -3559,7 +3559,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.IsCommandGroupDirty> ME_BECS_Units_IsCommandGroupDirty;
         }
         public struct JobDebugData40 { // ME.BECS.Commands.CommandBuildSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandBuildSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitCommandGroupAspect a0;
@@ -3581,7 +3581,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
         public struct JobDebugData41 { // ME.BECS.Commands.CommandAttackSystem+CleanUpJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandAttackSystem.CleanUpJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitAspect a0;
@@ -3591,7 +3591,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData42 { // ME.BECS.Transforms.TransformWorldMatrixUpdateSystem+CalculateRootsJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Transforms.TransformWorldMatrixUpdateSystem.CalculateRootsJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3601,7 +3601,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData43 { // ME.BECS.Attack.RotateWhileAttackSystem+IdleJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.RotateWhileAttackSystem.IdleJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitAspect a0;
@@ -3615,7 +3615,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
         }
         public struct JobDebugData44 { // ME.BECS.Attack.StopWhileAttackSystem+JobRemove
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.StopWhileAttackSystem.JobRemove jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3624,7 +3624,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData45 { // ME.BECS.Attack.StopWhileAttackSystem+JobRotate
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.StopWhileAttackSystem.JobRotate jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3637,7 +3637,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Units.PathFollowComponent> ME_BECS_Units_PathFollowComponent;
         }
         public struct JobDebugData46 { // ME.BECS.Attack.ReloadSystem+ReloadJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.ReloadSystem.ReloadJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3646,7 +3646,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Attack.ReloadedComponent> ME_BECS_Attack_ReloadedComponent;
         }
         public struct JobDebugData47 { // ME.BECS.Attack.FireSystem+FireJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.FireSystem.FireJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3675,7 +3675,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData48 { // ME.BECS.Attack.ResetCanFireSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.ResetCanFireSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3684,7 +3684,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Attack.FireUsedComponent> ME_BECS_Attack_FireUsedComponent;
         }
         public struct JobDebugData49 { // ME.BECS.Attack.SearchTargetSystem+SearchTargetJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.SearchTargetSystem.SearchTargetJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3698,7 +3698,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
         }
         public struct JobDebugData50 { // ME.BECS.Attack.CanFireSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.CanFireSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3710,7 +3710,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Attack.ReloadedComponent> ME_BECS_Attack_ReloadedComponent;
         }
         public struct JobDebugData51 { // ME.BECS.Attack.RotateWhileAttackSystem+RotateAttackSensorJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.RotateWhileAttackSystem.RotateAttackSensorJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3722,7 +3722,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData52 { // ME.BECS.FogOfWar.QuadTreeQueryFogOfWarSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.QuadTreeQueryFogOfWarSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.QuadTreeQueryAspect a0;
@@ -3734,7 +3734,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData53 { // ME.BECS.Transforms.TransformWorldMatrixUpdateSystem+CalculateRootsWithChildrenJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Transforms.TransformWorldMatrixUpdateSystem.CalculateRootsWithChildrenJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Transforms.TransformAspect a0;
@@ -3748,7 +3748,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData54 { // ME.BECS.Attack.MoveToAttackerSystem+MoveToAttackerJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.MoveToAttackerSystem.MoveToAttackerJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitAspect a0;
@@ -3776,7 +3776,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitLookAtComponent> ME_BECS_Units_UnitLookAtComponent;
         }
         public struct JobDebugData55 { // ME.BECS.Attack.StopWhileAttackSystem+JobSet
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.StopWhileAttackSystem.JobSet jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Attack.AttackAspect a0;
@@ -3786,7 +3786,7 @@ namespace ME.BECS {
             public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData56 { // ME.BECS.Attack.MoveToAttackerSystem+StopOnTargetJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.MoveToAttackerSystem.StopOnTargetJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Units.UnitAspect a0;
@@ -3818,7 +3818,7 @@ namespace ME.BECS {
         
         #if ENABLE_UNITY_COLLECTIONS_CHECKS && ENABLE_BECS_COLLECTIONS_CHECKS
         public struct JobDebugData1Unsafe { // ME.BECS.FogOfWar.UpdateSystem+RevealRectPartialJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRectPartialJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Transforms.ParentComponent> c0;
@@ -3834,7 +3834,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData2Unsafe { // ME.BECS.FogOfWar.ShadowCopyUpdateSystem+UpdatePointsJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.ShadowCopyUpdateSystem.UpdatePointsJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.FogOfWar.FogOfWarShadowCopyComponent> c0;
@@ -3853,7 +3853,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Views.IsViewRequested> ME_BECS_Views_IsViewRequested;
         }
         public struct JobDebugData3Unsafe { // ME.BECS.FogOfWar.ShadowCopyUpdateSystem+UpdateRectJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.ShadowCopyUpdateSystem.UpdateRectJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.FogOfWar.FogOfWarShadowCopyComponent> c0;
@@ -3873,7 +3873,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Views.IsViewRequested> ME_BECS_Views_IsViewRequested;
         }
         public struct JobDebugData4Unsafe { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeSectorJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangeSectorJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent> c0;
@@ -3888,7 +3888,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData5Unsafe { // ME.BECS.FogOfWar.UpdateSystem+RevealRangePartialJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangePartialJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Transforms.ParentComponent> c0;
@@ -3904,7 +3904,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData6Unsafe { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangeJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent> c0;
@@ -3917,7 +3917,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData7Unsafe { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeSectorPartialJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRangeSectorPartialJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Transforms.ParentComponent> c0;
@@ -3934,7 +3934,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData8Unsafe { // ME.BECS.FogOfWar.UpdateSystem+RevealRectJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.UpdateSystem.RevealRectJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent> c0;
@@ -3947,19 +3947,19 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData9Unsafe { // ME.BECS.FogOfWar.ShadowCopySystem+CreateJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.ShadowCopySystem.CreateJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
         }
         public struct JobDebugData10Unsafe { // Sample.FilterEntitiesSystem+JobSetTest
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public Sample.FilterEntitiesSystem.JobSetTest jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<Sample.TestComponent> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerWO<Sample.TestComponent> Sample_TestComponent;
         }
         public struct JobDebugData11Unsafe { // ME.BECS.Units.HitSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.HitSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Units.DamageTookComponent> c0;
@@ -3967,14 +3967,14 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
         }
         public struct JobDebugData12Unsafe { // ME.BECS.Views.Jobs+JobAddToScene
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Views.Jobs.JobAddToScene jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Views.IsViewRequested> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData13Unsafe { // ME.BECS.Views.Jobs+JobAssignViews
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Views.Jobs.JobAssignViews jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Views.AssignViewComponent> c0;
@@ -3982,14 +3982,14 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData14Unsafe { // ME.BECS.Views.Jobs+JobRemoveFromScene
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Views.Jobs.JobRemoveFromScene jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Views.ViewComponent> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData15Unsafe { // ME.BECS.DestroyWithTicksSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.DestroyWithTicksSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.DestroyWithTicks> c0;
@@ -4002,7 +4002,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
         public struct JobDebugData16Unsafe { // ME.BECS.DestroyWithLifetimeSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.DestroyWithLifetimeSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.DestroyWithLifetime> c0;
@@ -4015,14 +4015,14 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
         public struct JobDebugData17Unsafe { // ME.BECS.Pathfinding.UpdateGraphSystem+ResetPathJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.UpdateGraphSystem.ResetPathJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Pathfinding.TargetPathComponent> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Pathfinding.TargetPathComponent> ME_BECS_Pathfinding_TargetPathComponent;
         }
         public struct JobDebugData18Unsafe { // ME.BECS.Pathfinding.BuildPathSystem+UpdatePathJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.BuildPathSystem.UpdatePathJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Pathfinding.TargetComponent> c0;
@@ -4032,7 +4032,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Pathfinding.TargetPathComponent> ME_BECS_Pathfinding_TargetPathComponent;
         }
         public struct JobDebugData19Unsafe { // ME.BECS.Pathfinding.UpdateGraphSystem+UpdateGraphMaskJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.UpdateGraphSystem.UpdateGraphMaskJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Pathfinding.GraphMaskComponent> c0;
@@ -4047,14 +4047,14 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
         public struct JobDebugData20Unsafe { // ME.BECS.Commands.CommandBuildUpdateSystem+CompleteJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandBuildUpdateSystem.CompleteJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Commands.BuildingInProgress> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Commands.BuildingInProgress> ME_BECS_Commands_BuildingInProgress;
         }
         public struct JobDebugData21Unsafe { // ME.BECS.Commands.CommandBuildUpdateSystem+UpdateProgressJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandBuildUpdateSystem.UpdateProgressJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Commands.BuildInProgress> c0;
@@ -4072,36 +4072,22 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
-        public struct JobDebugData22Unsafe { // ME.BECS.UnitsHealthBars.DrawHealthBarsSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
-            [NativeDisableUnsafePtrRestriction] public ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job jobData;
-            [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
-            [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarStaticComponent> ME_BECS_FogOfWar_FogOfWarStaticComponent;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Players.OwnerComponent> ME_BECS_Players_OwnerComponent;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Players.PlayerComponent> ME_BECS_Players_PlayerComponent;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
-            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Views.CameraComponent> ME_BECS_Views_CameraComponent;
-        }
-        public struct JobDebugData23Unsafe { // ME.BECS.FogOfWar.CreateSystem+CleanUpJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData22Unsafe { // ME.BECS.FogOfWar.CreateSystem+CleanUpJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.CreateSystem.CleanUpJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Players.TeamAspect a0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
         }
-        public struct JobDebugData24Unsafe { // ME.BECS.FogOfWar.CreateSystem+CreateJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData23Unsafe { // ME.BECS.FogOfWar.CreateSystem+CreateJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.CreateSystem.CreateJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Players.TeamAspect a0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
         }
-        public struct JobDebugData25Unsafe { // Sample.FilterEntitiesSystem+JobMove
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData24Unsafe { // Sample.FilterEntitiesSystem+JobMove
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public Sample.FilterEntitiesSystem.JobMove jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4110,8 +4096,8 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.LocalScaleComponent> ME_BECS_Transforms_LocalScaleComponent;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.ParentComponent> ME_BECS_Transforms_ParentComponent;
         }
-        public struct JobDebugData26Unsafe { // ME.BECS.QuadTreeQuerySystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData25Unsafe { // ME.BECS.QuadTreeQuerySystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.QuadTreeQuerySystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.QuadTreeQueryAspect a0;
@@ -4120,8 +4106,8 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.QuadTreeResult> ME_BECS_QuadTreeResult;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
-        public struct JobDebugData27Unsafe { // ME.BECS.QuadTreeInsertSystem+CollectJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData26Unsafe { // ME.BECS.QuadTreeInsertSystem+CollectJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.QuadTreeInsertSystem.CollectJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.QuadTreeAspect a0;
@@ -4129,8 +4115,8 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.QuadTreeElement> ME_BECS_QuadTreeElement;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
-        public struct JobDebugData28Unsafe { // ME.BECS.Units.DestroySystem+DestroyJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData27Unsafe { // ME.BECS.Units.DestroySystem+DestroyJob
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.DestroySystem.DestroyJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
@@ -4153,8 +4139,8 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitSelectionGroupComponent> ME_BECS_Units_UnitSelectionGroupComponent;
         }
-        public struct JobDebugData29Unsafe { // ME.BECS.Units.SteeringWithAvoidanceSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData28Unsafe { // ME.BECS.Units.SteeringWithAvoidanceSystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.SteeringWithAvoidanceSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4172,8 +4158,8 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
-        public struct JobDebugData30Unsafe { // ME.BECS.Units.SteeringSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+        public struct JobDebugData29Unsafe { // ME.BECS.Units.SteeringSystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Units.SteeringSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4190,8 +4176,22 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
+        public struct JobDebugData30Unsafe { // ME.BECS.UnitsHealthBars.DrawHealthBarsSystem+Job
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
+            [NativeDisableUnsafePtrRestriction] public ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job jobData;
+            [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
+            [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent> ME_BECS_FogOfWar_FogOfWarComponent;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarStaticComponent> ME_BECS_FogOfWar_FogOfWarStaticComponent;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Players.OwnerComponent> ME_BECS_Players_OwnerComponent;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Players.PlayerComponent> ME_BECS_Players_PlayerComponent;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
+            [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Views.CameraComponent> ME_BECS_Views_CameraComponent;
+        }
         public struct JobDebugData31Unsafe { // ME.BECS.Bullets.FlySystem+FlyJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Bullets.FlySystem.FlyJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Bullets.BulletAspect a0;
@@ -4206,7 +4206,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData32Unsafe { // ME.BECS.Bullets.DestroySystem+DestroyJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Bullets.DestroySystem.DestroyJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Bullets.BulletAspect a0;
@@ -4234,7 +4234,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
         }
         public struct JobDebugData33Unsafe { // ME.BECS.Pathfinding.FollowPathSystem+SpeedDownOnHoldJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathSystem.SpeedDownOnHoldJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
@@ -4242,7 +4242,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.NavAgentRuntimeSpeedComponent> ME_BECS_Units_NavAgentRuntimeSpeedComponent;
         }
         public struct JobDebugData34Unsafe { // ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem+PathFollowJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem.PathFollowJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4267,7 +4267,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
         public struct JobDebugData35Unsafe { // ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem+SpeedDownOnHoldJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem.SpeedDownOnHoldJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
@@ -4275,7 +4275,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.NavAgentRuntimeSpeedComponent> ME_BECS_Units_NavAgentRuntimeSpeedComponent;
         }
         public struct JobDebugData36Unsafe { // ME.BECS.Pathfinding.FollowPathSystem+PathFollowJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.FollowPathSystem.PathFollowJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4300,7 +4300,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
         public struct JobDebugData37Unsafe { // ME.BECS.Pathfinding.LookAtSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Pathfinding.LookAtSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4312,7 +4312,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitLookAtComponent> ME_BECS_Units_UnitLookAtComponent;
         }
         public struct JobDebugData38Unsafe { // ME.BECS.Commands.CommandMoveSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandMoveSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitCommandGroupAspect a0;
@@ -4335,7 +4335,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData39Unsafe { // ME.BECS.Commands.CommandAttackSystem+MoveJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandAttackSystem.MoveJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitCommandGroupAspect a0;
@@ -4351,7 +4351,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.IsCommandGroupDirty> ME_BECS_Units_IsCommandGroupDirty;
         }
         public struct JobDebugData40Unsafe { // ME.BECS.Commands.CommandBuildSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandBuildSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitCommandGroupAspect a0;
@@ -4373,7 +4373,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitCommandGroupComponent> ME_BECS_Units_UnitCommandGroupComponent;
         }
         public struct JobDebugData41Unsafe { // ME.BECS.Commands.CommandAttackSystem+CleanUpJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Commands.CommandAttackSystem.CleanUpJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
@@ -4383,7 +4383,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData42Unsafe { // ME.BECS.Transforms.TransformWorldMatrixUpdateSystem+CalculateRootsJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Transforms.TransformWorldMatrixUpdateSystem.CalculateRootsJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4393,7 +4393,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData43Unsafe { // ME.BECS.Attack.RotateWhileAttackSystem+IdleJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.RotateWhileAttackSystem.IdleJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
@@ -4407,7 +4407,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent> ME_BECS_Units_NavAgentRuntimeComponent;
         }
         public struct JobDebugData44Unsafe { // ME.BECS.Attack.StopWhileAttackSystem+JobRemove
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.StopWhileAttackSystem.JobRemove jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4416,7 +4416,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData45Unsafe { // ME.BECS.Attack.StopWhileAttackSystem+JobRotate
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.StopWhileAttackSystem.JobRotate jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4429,7 +4429,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.PathFollowComponent> ME_BECS_Units_PathFollowComponent;
         }
         public struct JobDebugData46Unsafe { // ME.BECS.Attack.ReloadSystem+ReloadJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.ReloadSystem.ReloadJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4438,7 +4438,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Attack.ReloadedComponent> ME_BECS_Attack_ReloadedComponent;
         }
         public struct JobDebugData47Unsafe { // ME.BECS.Attack.FireSystem+FireJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.FireSystem.FireJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4467,7 +4467,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Views.ViewComponent> ME_BECS_Views_ViewComponent;
         }
         public struct JobDebugData48Unsafe { // ME.BECS.Attack.ResetCanFireSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.ResetCanFireSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4476,7 +4476,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Attack.FireUsedComponent> ME_BECS_Attack_FireUsedComponent;
         }
         public struct JobDebugData49Unsafe { // ME.BECS.Attack.SearchTargetSystem+SearchTargetJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.SearchTargetSystem.SearchTargetJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4490,7 +4490,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent> ME_BECS_Units_UnitHealthComponent;
         }
         public struct JobDebugData50Unsafe { // ME.BECS.Attack.CanFireSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.CanFireSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4502,7 +4502,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Attack.ReloadedComponent> ME_BECS_Attack_ReloadedComponent;
         }
         public struct JobDebugData51Unsafe { // ME.BECS.Attack.RotateWhileAttackSystem+RotateAttackSensorJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.RotateWhileAttackSystem.RotateAttackSensorJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4514,7 +4514,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData52Unsafe { // ME.BECS.FogOfWar.QuadTreeQueryFogOfWarSystem+Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.FogOfWar.QuadTreeQueryFogOfWarSystem.Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.QuadTreeQueryAspect a0;
@@ -4526,7 +4526,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData53Unsafe { // ME.BECS.Transforms.TransformWorldMatrixUpdateSystem+CalculateRootsWithChildrenJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Transforms.TransformWorldMatrixUpdateSystem.CalculateRootsWithChildrenJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Transforms.TransformAspect a0;
@@ -4540,7 +4540,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Transforms.WorldMatrixComponent> ME_BECS_Transforms_WorldMatrixComponent;
         }
         public struct JobDebugData54Unsafe { // ME.BECS.Attack.MoveToAttackerSystem+MoveToAttackerJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.MoveToAttackerSystem.MoveToAttackerJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
@@ -4568,7 +4568,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitLookAtComponent> ME_BECS_Units_UnitLookAtComponent;
         }
         public struct JobDebugData55Unsafe { // ME.BECS.Attack.StopWhileAttackSystem+JobSet
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.StopWhileAttackSystem.JobSet jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Attack.AttackAspect a0;
@@ -4578,7 +4578,7 @@ namespace ME.BECS {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Units.UnitHoldComponent> ME_BECS_Units_UnitHoldComponent;
         }
         public struct JobDebugData56Unsafe { // ME.BECS.Attack.MoveToAttackerSystem+StopOnTargetJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Attack.MoveToAttackerSystem.StopOnTargetJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Units.UnitAspect a0;
@@ -4784,7 +4784,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.UpdateSystem+RevealRectPartialJob
                 CacheJobDebugData1.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData1* data = (JobDebugData1*)CacheJobDebugData1.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -4794,7 +4794,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData1.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.UpdateSystem.RevealRectPartialJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Transforms.ParentComponent>(buffer->state, buffer->worldId);
@@ -4816,7 +4816,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.ShadowCopyUpdateSystem+UpdatePointsJob
                 CacheJobDebugData2.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData2* data = (JobDebugData2*)CacheJobDebugData2.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -4826,7 +4826,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData2.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.ShadowCopyUpdateSystem.UpdatePointsJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.FogOfWar.FogOfWarShadowCopyComponent>(buffer->state, buffer->worldId);
@@ -4851,7 +4851,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.ShadowCopyUpdateSystem+UpdateRectJob
                 CacheJobDebugData3.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData3* data = (JobDebugData3*)CacheJobDebugData3.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -4861,7 +4861,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData3.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.ShadowCopyUpdateSystem.UpdateRectJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.FogOfWar.FogOfWarShadowCopyComponent>(buffer->state, buffer->worldId);
@@ -4887,7 +4887,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeSectorJob
                 CacheJobDebugData4.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData4* data = (JobDebugData4*)CacheJobDebugData4.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -4897,7 +4897,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData4.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.UpdateSystem.RevealRangeSectorJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent>(buffer->state, buffer->worldId);
@@ -4918,7 +4918,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.UpdateSystem+RevealRangePartialJob
                 CacheJobDebugData5.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData5* data = (JobDebugData5*)CacheJobDebugData5.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -4928,7 +4928,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData5.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.UpdateSystem.RevealRangePartialJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Transforms.ParentComponent>(buffer->state, buffer->worldId);
@@ -4950,7 +4950,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeJob
                 CacheJobDebugData6.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData6* data = (JobDebugData6*)CacheJobDebugData6.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -4960,7 +4960,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData6.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.UpdateSystem.RevealRangeJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent>(buffer->state, buffer->worldId);
@@ -4979,7 +4979,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.UpdateSystem+RevealRangeSectorPartialJob
                 CacheJobDebugData7.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData7* data = (JobDebugData7*)CacheJobDebugData7.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -4989,7 +4989,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData7.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.UpdateSystem.RevealRangeSectorPartialJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Transforms.ParentComponent>(buffer->state, buffer->worldId);
@@ -5012,7 +5012,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.UpdateSystem+RevealRectJob
                 CacheJobDebugData8.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData8* data = (JobDebugData8*)CacheJobDebugData8.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5022,7 +5022,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData8.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.UpdateSystem.RevealRectJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.FogOfWar.FogOfWarRevealerComponent>(buffer->state, buffer->worldId);
@@ -5041,7 +5041,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.ShadowCopySystem+CreateJob
                 CacheJobDebugData9.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData9* data = (JobDebugData9*)CacheJobDebugData9.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5051,7 +5051,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData9.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.ShadowCopySystem.CreateJob*)jobData;
                     data->buffer = buffer;
                     return data;
@@ -5062,7 +5062,7 @@ namespace ME.BECS {
             { // Sample.FilterEntitiesSystem+JobSetTest
                 CacheJobDebugData10.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData10* data = (JobDebugData10*)CacheJobDebugData10.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5072,7 +5072,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData10.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(Sample.FilterEntitiesSystem.JobSetTest*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<Sample.TestComponent>(buffer->state, buffer->worldId);
@@ -5085,7 +5085,7 @@ namespace ME.BECS {
             { // ME.BECS.Units.HitSystem+Job
                 CacheJobDebugData11.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData11* data = (JobDebugData11*)CacheJobDebugData11.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5095,7 +5095,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData11.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Units.HitSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Units.DamageTookComponent>(buffer->state, buffer->worldId);
@@ -5109,7 +5109,7 @@ namespace ME.BECS {
             { // ME.BECS.Views.Jobs+JobAddToScene
                 CacheJobDebugData12.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData12* data = (JobDebugData12*)CacheJobDebugData12.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5119,7 +5119,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData12.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Views.Jobs.JobAddToScene*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Views.IsViewRequested>(buffer->state, buffer->worldId);
@@ -5132,7 +5132,7 @@ namespace ME.BECS {
             { // ME.BECS.Views.Jobs+JobAssignViews
                 CacheJobDebugData13.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData13* data = (JobDebugData13*)CacheJobDebugData13.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5142,7 +5142,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData13.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Views.Jobs.JobAssignViews*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Views.AssignViewComponent>(buffer->state, buffer->worldId);
@@ -5156,7 +5156,7 @@ namespace ME.BECS {
             { // ME.BECS.Views.Jobs+JobRemoveFromScene
                 CacheJobDebugData14.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData14* data = (JobDebugData14*)CacheJobDebugData14.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5166,7 +5166,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData14.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Views.Jobs.JobRemoveFromScene*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Views.ViewComponent>(buffer->state, buffer->worldId);
@@ -5179,7 +5179,7 @@ namespace ME.BECS {
             { // ME.BECS.DestroyWithTicksSystem+Job
                 CacheJobDebugData15.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData15* data = (JobDebugData15*)CacheJobDebugData15.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5189,7 +5189,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData15.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.DestroyWithTicksSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.DestroyWithTicks>(buffer->state, buffer->worldId);
@@ -5208,7 +5208,7 @@ namespace ME.BECS {
             { // ME.BECS.DestroyWithLifetimeSystem+Job
                 CacheJobDebugData16.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData16* data = (JobDebugData16*)CacheJobDebugData16.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5218,7 +5218,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData16.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.DestroyWithLifetimeSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.DestroyWithLifetime>(buffer->state, buffer->worldId);
@@ -5237,7 +5237,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.UpdateGraphSystem+ResetPathJob
                 CacheJobDebugData17.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData17* data = (JobDebugData17*)CacheJobDebugData17.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5247,7 +5247,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData17.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.UpdateGraphSystem.ResetPathJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Pathfinding.TargetPathComponent>(buffer->state, buffer->worldId);
@@ -5260,7 +5260,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.BuildPathSystem+UpdatePathJob
                 CacheJobDebugData18.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData18* data = (JobDebugData18*)CacheJobDebugData18.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5270,7 +5270,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData18.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.BuildPathSystem.UpdatePathJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Pathfinding.TargetComponent>(buffer->state, buffer->worldId);
@@ -5286,7 +5286,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.UpdateGraphSystem+UpdateGraphMaskJob
                 CacheJobDebugData19.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData19* data = (JobDebugData19*)CacheJobDebugData19.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5296,7 +5296,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData19.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.UpdateGraphSystem.UpdateGraphMaskJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Pathfinding.GraphMaskComponent>(buffer->state, buffer->worldId);
@@ -5317,7 +5317,7 @@ namespace ME.BECS {
             { // ME.BECS.Commands.CommandBuildUpdateSystem+CompleteJob
                 CacheJobDebugData20.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData20* data = (JobDebugData20*)CacheJobDebugData20.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5327,7 +5327,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData20.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Commands.CommandBuildUpdateSystem.CompleteJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Commands.BuildingInProgress>(buffer->state, buffer->worldId);
@@ -5340,7 +5340,7 @@ namespace ME.BECS {
             { // ME.BECS.Commands.CommandBuildUpdateSystem+UpdateProgressJob
                 CacheJobDebugData21.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData21* data = (JobDebugData21*)CacheJobDebugData21.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5350,7 +5350,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData21.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Commands.CommandBuildUpdateSystem.UpdateProgressJob*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Commands.BuildInProgress>(buffer->state, buffer->worldId);
@@ -5372,10 +5372,10 @@ namespace ME.BECS {
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
                 CompiledJobs<ME.BECS.Commands.CommandBuildUpdateSystem.UpdateProgressJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData21Unsafe) : typeof(JobDebugData21));
             }
-            { // ME.BECS.UnitsHealthBars.DrawHealthBarsSystem+Job
+            { // ME.BECS.FogOfWar.CreateSystem+CleanUpJob
                 CacheJobDebugData22.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData22* data = (JobDebugData22*)CacheJobDebugData22.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5385,27 +5385,20 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData22.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
-                    data->jobData = *(ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job*)jobData;
+                    data->scheduleFlags = scheduleFlags;
+                    data->jobData = *(ME.BECS.FogOfWar.CreateSystem.CleanUpJob*)jobData;
                     data->buffer = buffer;
-                    data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
+                    data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Players.TeamAspect>(buffer->state);
                     data->ME_BECS_FogOfWar_FogOfWarComponent = new SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent>(buffer->state, buffer->worldId);
-                    data->ME_BECS_FogOfWar_FogOfWarStaticComponent = new SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarStaticComponent>(buffer->state, buffer->worldId);
-                    data->ME_BECS_Players_OwnerComponent = new SafetyComponentContainerRO<ME.BECS.Players.OwnerComponent>(buffer->state, buffer->worldId);
-                    data->ME_BECS_Players_PlayerComponent = new SafetyComponentContainerRO<ME.BECS.Players.PlayerComponent>(buffer->state, buffer->worldId);
-                    data->ME_BECS_Transforms_WorldMatrixComponent = new SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent>(buffer->state, buffer->worldId);
-                    data->ME_BECS_Units_NavAgentRuntimeComponent = new SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent>(buffer->state, buffer->worldId);
-                    data->ME_BECS_Units_UnitHealthComponent = new SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent>(buffer->state, buffer->worldId);
-                    data->ME_BECS_Views_CameraComponent = new SafetyComponentContainerRO<ME.BECS.Views.CameraComponent>(buffer->state, buffer->worldId);
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData22Unsafe) : typeof(JobDebugData22));
+                CompiledJobs<ME.BECS.FogOfWar.CreateSystem.CleanUpJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData22Unsafe) : typeof(JobDebugData22));
             }
-            { // ME.BECS.FogOfWar.CreateSystem+CleanUpJob
+            { // ME.BECS.FogOfWar.CreateSystem+CreateJob
                 CacheJobDebugData23.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData23* data = (JobDebugData23*)CacheJobDebugData23.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5415,20 +5408,20 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData23.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
-                    data->jobData = *(ME.BECS.FogOfWar.CreateSystem.CleanUpJob*)jobData;
+                    data->scheduleFlags = scheduleFlags;
+                    data->jobData = *(ME.BECS.FogOfWar.CreateSystem.CreateJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Players.TeamAspect>(buffer->state);
-                    data->ME_BECS_FogOfWar_FogOfWarComponent = new SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_FogOfWar_FogOfWarComponent = new SafetyComponentContainerRW<ME.BECS.FogOfWar.FogOfWarComponent>(buffer->state, buffer->worldId);
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.FogOfWar.CreateSystem.CleanUpJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData23Unsafe) : typeof(JobDebugData23));
+                CompiledJobs<ME.BECS.FogOfWar.CreateSystem.CreateJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData23Unsafe) : typeof(JobDebugData23));
             }
-            { // ME.BECS.FogOfWar.CreateSystem+CreateJob
+            { // Sample.FilterEntitiesSystem+JobMove
                 CacheJobDebugData24.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData24* data = (JobDebugData24*)CacheJobDebugData24.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5438,30 +5431,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData24.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
-                    data->jobData = *(ME.BECS.FogOfWar.CreateSystem.CreateJob*)jobData;
-                    data->buffer = buffer;
-                    data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Players.TeamAspect>(buffer->state);
-                    data->ME_BECS_FogOfWar_FogOfWarComponent = new SafetyComponentContainerRW<ME.BECS.FogOfWar.FogOfWarComponent>(buffer->state, buffer->worldId);
-                    return data;
-                }
-                var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.FogOfWar.CreateSystem.CreateJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData24Unsafe) : typeof(JobDebugData24));
-            }
-            { // Sample.FilterEntitiesSystem+JobMove
-                CacheJobDebugData25.cache.Data = default;
-                [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
-                    JobDebugData25* data = (JobDebugData25*)CacheJobDebugData25.cache.Data;
-                    if (data == null) {
-                        if (unsafeMode == true) {
-                            data = (JobDebugData25*)_make(new JobDebugData25Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
-                            } else {
-                            data = (JobDebugData25*)_make(new JobDebugData25(), Constants.ALLOCATOR_DOMAIN).ptr;
-                        }
-                        CacheJobDebugData25.cache.Data = (System.IntPtr)data;
-                    }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(Sample.FilterEntitiesSystem.JobMove*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -5472,22 +5442,22 @@ namespace ME.BECS {
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<Sample.FilterEntitiesSystem.JobMove>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData25Unsafe) : typeof(JobDebugData25));
+                CompiledJobs<Sample.FilterEntitiesSystem.JobMove>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData24Unsafe) : typeof(JobDebugData24));
             }
             { // ME.BECS.QuadTreeQuerySystem+Job
-                CacheJobDebugData26.cache.Data = default;
+                CacheJobDebugData25.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
-                    JobDebugData26* data = (JobDebugData26*)CacheJobDebugData26.cache.Data;
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
+                    JobDebugData25* data = (JobDebugData25*)CacheJobDebugData25.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
-                            data = (JobDebugData26*)_make(new JobDebugData26Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData25*)_make(new JobDebugData25Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
                             } else {
-                            data = (JobDebugData26*)_make(new JobDebugData26(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData25*)_make(new JobDebugData25(), Constants.ALLOCATOR_DOMAIN).ptr;
                         }
-                        CacheJobDebugData26.cache.Data = (System.IntPtr)data;
+                        CacheJobDebugData25.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.QuadTreeQuerySystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.QuadTreeQueryAspect>(buffer->state);
@@ -5498,22 +5468,22 @@ namespace ME.BECS {
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.QuadTreeQuerySystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData26Unsafe) : typeof(JobDebugData26));
+                CompiledJobs<ME.BECS.QuadTreeQuerySystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData25Unsafe) : typeof(JobDebugData25));
             }
             { // ME.BECS.QuadTreeInsertSystem+CollectJob
-                CacheJobDebugData27.cache.Data = default;
+                CacheJobDebugData26.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
-                    JobDebugData27* data = (JobDebugData27*)CacheJobDebugData27.cache.Data;
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
+                    JobDebugData26* data = (JobDebugData26*)CacheJobDebugData26.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
-                            data = (JobDebugData27*)_make(new JobDebugData27Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData26*)_make(new JobDebugData26Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
                             } else {
-                            data = (JobDebugData27*)_make(new JobDebugData27(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData26*)_make(new JobDebugData26(), Constants.ALLOCATOR_DOMAIN).ptr;
                         }
-                        CacheJobDebugData27.cache.Data = (System.IntPtr)data;
+                        CacheJobDebugData26.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.QuadTreeInsertSystem.CollectJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.QuadTreeAspect>(buffer->state);
@@ -5523,22 +5493,22 @@ namespace ME.BECS {
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.QuadTreeInsertSystem.CollectJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData27Unsafe) : typeof(JobDebugData27));
+                CompiledJobs<ME.BECS.QuadTreeInsertSystem.CollectJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData26Unsafe) : typeof(JobDebugData26));
             }
             { // ME.BECS.Units.DestroySystem+DestroyJob
-                CacheJobDebugData28.cache.Data = default;
+                CacheJobDebugData27.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
-                    JobDebugData28* data = (JobDebugData28*)CacheJobDebugData28.cache.Data;
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
+                    JobDebugData27* data = (JobDebugData27*)CacheJobDebugData27.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
-                            data = (JobDebugData28*)_make(new JobDebugData28Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData27*)_make(new JobDebugData27Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
                             } else {
-                            data = (JobDebugData28*)_make(new JobDebugData28(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData27*)_make(new JobDebugData27(), Constants.ALLOCATOR_DOMAIN).ptr;
                         }
-                        CacheJobDebugData28.cache.Data = (System.IntPtr)data;
+                        CacheJobDebugData27.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Units.DestroySystem.DestroyJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
@@ -5563,22 +5533,22 @@ namespace ME.BECS {
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.Units.DestroySystem.DestroyJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData28Unsafe) : typeof(JobDebugData28));
+                CompiledJobs<ME.BECS.Units.DestroySystem.DestroyJob>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData27Unsafe) : typeof(JobDebugData27));
             }
             { // ME.BECS.Units.SteeringWithAvoidanceSystem+Job
-                CacheJobDebugData29.cache.Data = default;
+                CacheJobDebugData28.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
-                    JobDebugData29* data = (JobDebugData29*)CacheJobDebugData29.cache.Data;
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
+                    JobDebugData28* data = (JobDebugData28*)CacheJobDebugData28.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
-                            data = (JobDebugData29*)_make(new JobDebugData29Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData28*)_make(new JobDebugData28Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
                             } else {
-                            data = (JobDebugData29*)_make(new JobDebugData29(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData28*)_make(new JobDebugData28(), Constants.ALLOCATOR_DOMAIN).ptr;
                         }
-                        CacheJobDebugData29.cache.Data = (System.IntPtr)data;
+                        CacheJobDebugData28.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Units.SteeringWithAvoidanceSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -5598,22 +5568,22 @@ namespace ME.BECS {
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.Units.SteeringWithAvoidanceSystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData29Unsafe) : typeof(JobDebugData29));
+                CompiledJobs<ME.BECS.Units.SteeringWithAvoidanceSystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData28Unsafe) : typeof(JobDebugData28));
             }
             { // ME.BECS.Units.SteeringSystem+Job
-                CacheJobDebugData30.cache.Data = default;
+                CacheJobDebugData29.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
-                    JobDebugData30* data = (JobDebugData30*)CacheJobDebugData30.cache.Data;
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
+                    JobDebugData29* data = (JobDebugData29*)CacheJobDebugData29.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
-                            data = (JobDebugData30*)_make(new JobDebugData30Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData29*)_make(new JobDebugData29Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
                             } else {
-                            data = (JobDebugData30*)_make(new JobDebugData30(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            data = (JobDebugData29*)_make(new JobDebugData29(), Constants.ALLOCATOR_DOMAIN).ptr;
                         }
-                        CacheJobDebugData30.cache.Data = (System.IntPtr)data;
+                        CacheJobDebugData29.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Units.SteeringSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -5632,12 +5602,42 @@ namespace ME.BECS {
                     return data;
                 }
                 var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
-                CompiledJobs<ME.BECS.Units.SteeringSystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData30Unsafe) : typeof(JobDebugData30));
+                CompiledJobs<ME.BECS.Units.SteeringSystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData29Unsafe) : typeof(JobDebugData29));
+            }
+            { // ME.BECS.UnitsHealthBars.DrawHealthBarsSystem+Job
+                CacheJobDebugData30.cache.Data = default;
+                [BurstCompile]
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
+                    JobDebugData30* data = (JobDebugData30*)CacheJobDebugData30.cache.Data;
+                    if (data == null) {
+                        if (unsafeMode == true) {
+                            data = (JobDebugData30*)_make(new JobDebugData30Unsafe(), Constants.ALLOCATOR_DOMAIN).ptr;
+                            } else {
+                            data = (JobDebugData30*)_make(new JobDebugData30(), Constants.ALLOCATOR_DOMAIN).ptr;
+                        }
+                        CacheJobDebugData30.cache.Data = (System.IntPtr)data;
+                    }
+                    data->scheduleFlags = scheduleFlags;
+                    data->jobData = *(ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job*)jobData;
+                    data->buffer = buffer;
+                    data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
+                    data->ME_BECS_FogOfWar_FogOfWarComponent = new SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_FogOfWar_FogOfWarStaticComponent = new SafetyComponentContainerRO<ME.BECS.FogOfWar.FogOfWarStaticComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_Players_OwnerComponent = new SafetyComponentContainerRO<ME.BECS.Players.OwnerComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_Players_PlayerComponent = new SafetyComponentContainerRO<ME.BECS.Players.PlayerComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_Transforms_WorldMatrixComponent = new SafetyComponentContainerRO<ME.BECS.Transforms.WorldMatrixComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_Units_NavAgentRuntimeComponent = new SafetyComponentContainerRO<ME.BECS.Units.NavAgentRuntimeComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_Units_UnitHealthComponent = new SafetyComponentContainerRO<ME.BECS.Units.UnitHealthComponent>(buffer->state, buffer->worldId);
+                    data->ME_BECS_Views_CameraComponent = new SafetyComponentContainerRO<ME.BECS.Views.CameraComponent>(buffer->state, buffer->worldId);
+                    return data;
+                }
+                var fn = BurstCompiler.CompileFunctionPointer<CompiledJobCallback>(Method);
+                CompiledJobs<ME.BECS.UnitsHealthBars.DrawHealthBarsSystem.Job>.SetFunction(fn, (unsafeMode) => unsafeMode == true ? typeof(JobDebugData30Unsafe) : typeof(JobDebugData30));
             }
             { // ME.BECS.Bullets.FlySystem+FlyJob
                 CacheJobDebugData31.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData31* data = (JobDebugData31*)CacheJobDebugData31.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5647,7 +5647,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData31.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Bullets.FlySystem.FlyJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Bullets.BulletAspect>(buffer->state);
@@ -5668,7 +5668,7 @@ namespace ME.BECS {
             { // ME.BECS.Bullets.DestroySystem+DestroyJob
                 CacheJobDebugData32.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData32* data = (JobDebugData32*)CacheJobDebugData32.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5678,7 +5678,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData32.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Bullets.DestroySystem.DestroyJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Bullets.BulletAspect>(buffer->state);
@@ -5712,7 +5712,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.FollowPathSystem+SpeedDownOnHoldJob
                 CacheJobDebugData33.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData33* data = (JobDebugData33*)CacheJobDebugData33.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5722,7 +5722,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData33.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.FollowPathSystem.SpeedDownOnHoldJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
@@ -5736,7 +5736,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem+PathFollowJob
                 CacheJobDebugData34.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData34* data = (JobDebugData34*)CacheJobDebugData34.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5746,7 +5746,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData34.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem.PathFollowJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -5777,7 +5777,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem+SpeedDownOnHoldJob
                 CacheJobDebugData35.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData35* data = (JobDebugData35*)CacheJobDebugData35.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5787,7 +5787,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData35.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.FollowPathWithAvoidanceSystem.SpeedDownOnHoldJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
@@ -5801,7 +5801,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.FollowPathSystem+PathFollowJob
                 CacheJobDebugData36.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData36* data = (JobDebugData36*)CacheJobDebugData36.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5811,7 +5811,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData36.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.FollowPathSystem.PathFollowJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -5842,7 +5842,7 @@ namespace ME.BECS {
             { // ME.BECS.Pathfinding.LookAtSystem+Job
                 CacheJobDebugData37.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData37* data = (JobDebugData37*)CacheJobDebugData37.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5852,7 +5852,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData37.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Pathfinding.LookAtSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -5870,7 +5870,7 @@ namespace ME.BECS {
             { // ME.BECS.Commands.CommandMoveSystem+Job
                 CacheJobDebugData38.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData38* data = (JobDebugData38*)CacheJobDebugData38.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5880,7 +5880,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData38.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Commands.CommandMoveSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitCommandGroupAspect>(buffer->state);
@@ -5909,7 +5909,7 @@ namespace ME.BECS {
             { // ME.BECS.Commands.CommandAttackSystem+MoveJob
                 CacheJobDebugData39.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData39* data = (JobDebugData39*)CacheJobDebugData39.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5919,7 +5919,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData39.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Commands.CommandAttackSystem.MoveJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitCommandGroupAspect>(buffer->state);
@@ -5941,7 +5941,7 @@ namespace ME.BECS {
             { // ME.BECS.Commands.CommandBuildSystem+Job
                 CacheJobDebugData40.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData40* data = (JobDebugData40*)CacheJobDebugData40.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5951,7 +5951,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData40.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Commands.CommandBuildSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitCommandGroupAspect>(buffer->state);
@@ -5979,7 +5979,7 @@ namespace ME.BECS {
             { // ME.BECS.Commands.CommandAttackSystem+CleanUpJob
                 CacheJobDebugData41.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData41* data = (JobDebugData41*)CacheJobDebugData41.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -5989,7 +5989,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData41.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Commands.CommandAttackSystem.CleanUpJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
@@ -6005,7 +6005,7 @@ namespace ME.BECS {
             { // ME.BECS.Transforms.TransformWorldMatrixUpdateSystem+CalculateRootsJob
                 CacheJobDebugData42.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData42* data = (JobDebugData42*)CacheJobDebugData42.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6015,7 +6015,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData42.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Transforms.TransformWorldMatrixUpdateSystem.CalculateRootsJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -6031,7 +6031,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.RotateWhileAttackSystem+IdleJob
                 CacheJobDebugData43.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData43* data = (JobDebugData43*)CacheJobDebugData43.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6041,7 +6041,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData43.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.RotateWhileAttackSystem.IdleJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
@@ -6061,7 +6061,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.StopWhileAttackSystem+JobRemove
                 CacheJobDebugData44.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData44* data = (JobDebugData44*)CacheJobDebugData44.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6071,7 +6071,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData44.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.StopWhileAttackSystem.JobRemove*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6086,7 +6086,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.StopWhileAttackSystem+JobRotate
                 CacheJobDebugData45.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData45* data = (JobDebugData45*)CacheJobDebugData45.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6096,7 +6096,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData45.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.StopWhileAttackSystem.JobRotate*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6115,7 +6115,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.ReloadSystem+ReloadJob
                 CacheJobDebugData46.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData46* data = (JobDebugData46*)CacheJobDebugData46.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6125,7 +6125,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData46.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.ReloadSystem.ReloadJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6140,7 +6140,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.FireSystem+FireJob
                 CacheJobDebugData47.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData47* data = (JobDebugData47*)CacheJobDebugData47.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6150,7 +6150,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData47.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.FireSystem.FireJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6185,7 +6185,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.ResetCanFireSystem+Job
                 CacheJobDebugData48.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData48* data = (JobDebugData48*)CacheJobDebugData48.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6195,7 +6195,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData48.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.ResetCanFireSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6210,7 +6210,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.SearchTargetSystem+SearchTargetJob
                 CacheJobDebugData49.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData49* data = (JobDebugData49*)CacheJobDebugData49.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6220,7 +6220,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData49.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.SearchTargetSystem.SearchTargetJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6240,7 +6240,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.CanFireSystem+Job
                 CacheJobDebugData50.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData50* data = (JobDebugData50*)CacheJobDebugData50.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6250,7 +6250,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData50.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.CanFireSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6268,7 +6268,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.RotateWhileAttackSystem+RotateAttackSensorJob
                 CacheJobDebugData51.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData51* data = (JobDebugData51*)CacheJobDebugData51.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6278,7 +6278,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData51.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.RotateWhileAttackSystem.RotateAttackSensorJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6296,7 +6296,7 @@ namespace ME.BECS {
             { // ME.BECS.FogOfWar.QuadTreeQueryFogOfWarSystem+Job
                 CacheJobDebugData52.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData52* data = (JobDebugData52*)CacheJobDebugData52.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6306,7 +6306,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData52.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.FogOfWar.QuadTreeQueryFogOfWarSystem.Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.QuadTreeQueryAspect>(buffer->state);
@@ -6324,7 +6324,7 @@ namespace ME.BECS {
             { // ME.BECS.Transforms.TransformWorldMatrixUpdateSystem+CalculateRootsWithChildrenJob
                 CacheJobDebugData53.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData53* data = (JobDebugData53*)CacheJobDebugData53.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6334,7 +6334,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData53.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Transforms.TransformWorldMatrixUpdateSystem.CalculateRootsWithChildrenJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Transforms.TransformAspect>(buffer->state);
@@ -6354,7 +6354,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.MoveToAttackerSystem+MoveToAttackerJob
                 CacheJobDebugData54.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData54* data = (JobDebugData54*)CacheJobDebugData54.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6364,7 +6364,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData54.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.MoveToAttackerSystem.MoveToAttackerJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);
@@ -6398,7 +6398,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.StopWhileAttackSystem+JobSet
                 CacheJobDebugData55.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData55* data = (JobDebugData55*)CacheJobDebugData55.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6408,7 +6408,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData55.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.StopWhileAttackSystem.JobSet*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Attack.AttackAspect>(buffer->state);
@@ -6424,7 +6424,7 @@ namespace ME.BECS {
             { // ME.BECS.Attack.MoveToAttackerSystem+StopOnTargetJob
                 CacheJobDebugData56.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData56* data = (JobDebugData56*)CacheJobDebugData56.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -6434,7 +6434,7 @@ namespace ME.BECS {
                         }
                         CacheJobDebugData56.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Attack.MoveToAttackerSystem.StopOnTargetJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Units.UnitAspect>(buffer->state);

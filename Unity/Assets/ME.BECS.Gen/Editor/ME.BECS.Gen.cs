@@ -808,45 +808,45 @@ namespace ME.BECS.Editor {
         }
         #if ENABLE_UNITY_COLLECTIONS_CHECKS && ENABLE_BECS_COLLECTIONS_CHECKS
         public struct JobDebugData1 { // ME.BECS.Tests.Tests_Queries+Job1
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job1 jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
         }
         public struct JobDebugData2 { // ME.BECS.Tests.Tests_Queries_Static+TestSystem4+JobForComponents
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries_Static.TestSystem4.JobForComponents jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Tests.TestComponent> c0;
             public SafetyComponentContainerRO<ME.BECS.Tests.TestComponent> ME_BECS_Tests_TestComponent;
         }
         public struct JobDebugData3 { // ME.BECS.Tests.Tests_Queries+Job2Unsafe
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job2Unsafe jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Tests.TestComponent> c0;
             public SafetyComponentContainerRW<ME.BECS.Tests.Test3Component> ME_BECS_Tests_Test3Component;
         }
         public struct JobDebugData4 { // ME.BECS.Tests.Tests_Queries+Job2
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job2 jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
         }
         public struct JobDebugData5 { // ME.BECS.Tests.Tests_Queries+JobComponents
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.JobComponents jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Tests.TestComponent> c0;
             public SafetyComponentContainerRO<ME.BECS.Tests.TestComponent> ME_BECS_Tests_TestComponent;
         }
         public struct JobDebugData6 { // ME.BECS.Tests.Tests_Queries+Job1Unsafe
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job1Unsafe jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Tests.TestComponent> c0;
             public SafetyComponentContainerRW<ME.BECS.Tests.Test2Component> ME_BECS_Tests_Test2Component;
         }
         public struct JobDebugData7 { // ME.BECS.Tests.Tests_Aspects+TestDestroyJobFor
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Aspects.TestDestroyJobFor jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public RefRW<ME.BECS.Tests.TestTargetComponent> c0;
@@ -854,7 +854,7 @@ namespace ME.BECS.Editor {
             public SafetyComponentContainerRO<ME.BECS.Tests.TestTargetComponent> ME_BECS_Tests_TestTargetComponent;
         }
         public struct JobDebugData8 { // ME.BECS.Tests.Tests_Aspects+TestSetJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Aspects.TestSetJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Tests.Test2Aspect a0;
@@ -863,14 +863,14 @@ namespace ME.BECS.Editor {
             public SafetyComponentContainerRW<ME.BECS.Tests.Test4Component> ME_BECS_Tests_Test4Component;
         }
         public struct JobDebugData9 { // ME.BECS.Tests.Tests_Queries+TestA2Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.TestA2Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Tests.TestAspect a0;
             public SafetyComponentContainerRW<ME.BECS.Tests.Test2Component> ME_BECS_Tests_Test2Component;
         }
         public struct JobDebugData10 { // ME.BECS.Tests.Tests_Queries+TestA1Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.TestA1Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Tests.TestAspect a0;
@@ -878,7 +878,7 @@ namespace ME.BECS.Editor {
             public SafetyComponentContainerRW<ME.BECS.Tests.TestComponent> ME_BECS_Tests_TestComponent;
         }
         public struct JobDebugData11 { // ME.BECS.Tests.Tests_Aspects+TestJobFor
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Aspects.TestJobFor jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             public ME.BECS.Tests.Test2Aspect a0;
@@ -890,45 +890,45 @@ namespace ME.BECS.Editor {
         
         #if ENABLE_UNITY_COLLECTIONS_CHECKS && ENABLE_BECS_COLLECTIONS_CHECKS
         public struct JobDebugData1Unsafe { // ME.BECS.Tests.Tests_Queries+Job1
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job1 jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
         }
         public struct JobDebugData2Unsafe { // ME.BECS.Tests.Tests_Queries_Static+TestSystem4+JobForComponents
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries_Static.TestSystem4.JobForComponents jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Tests.TestComponent> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Tests.TestComponent> ME_BECS_Tests_TestComponent;
         }
         public struct JobDebugData3Unsafe { // ME.BECS.Tests.Tests_Queries+Job2Unsafe
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job2Unsafe jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Tests.TestComponent> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Tests.Test3Component> ME_BECS_Tests_Test3Component;
         }
         public struct JobDebugData4Unsafe { // ME.BECS.Tests.Tests_Queries+Job2
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job2 jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
         }
         public struct JobDebugData5Unsafe { // ME.BECS.Tests.Tests_Queries+JobComponents
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.JobComponents jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Tests.TestComponent> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Tests.TestComponent> ME_BECS_Tests_TestComponent;
         }
         public struct JobDebugData6Unsafe { // ME.BECS.Tests.Tests_Queries+Job1Unsafe
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.Job1Unsafe jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Tests.TestComponent> c0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Tests.Test2Component> ME_BECS_Tests_Test2Component;
         }
         public struct JobDebugData7Unsafe { // ME.BECS.Tests.Tests_Aspects+TestDestroyJobFor
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Aspects.TestDestroyJobFor jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public RefRW<ME.BECS.Tests.TestTargetComponent> c0;
@@ -936,7 +936,7 @@ namespace ME.BECS.Editor {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRO<ME.BECS.Tests.TestTargetComponent> ME_BECS_Tests_TestTargetComponent;
         }
         public struct JobDebugData8Unsafe { // ME.BECS.Tests.Tests_Aspects+TestSetJob
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Aspects.TestSetJob jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Tests.Test2Aspect a0;
@@ -945,14 +945,14 @@ namespace ME.BECS.Editor {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Tests.Test4Component> ME_BECS_Tests_Test4Component;
         }
         public struct JobDebugData9Unsafe { // ME.BECS.Tests.Tests_Queries+TestA2Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.TestA2Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Tests.TestAspect a0;
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Tests.Test2Component> ME_BECS_Tests_Test2Component;
         }
         public struct JobDebugData10Unsafe { // ME.BECS.Tests.Tests_Queries+TestA1Job
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Queries.TestA1Job jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Tests.TestAspect a0;
@@ -960,7 +960,7 @@ namespace ME.BECS.Editor {
             [NativeDisableContainerSafetyRestriction] public SafetyComponentContainerRW<ME.BECS.Tests.TestComponent> ME_BECS_Tests_TestComponent;
         }
         public struct JobDebugData11Unsafe { // ME.BECS.Tests.Tests_Aspects+TestJobFor
-            [NativeDisableUnsafePtrRestriction] public ScheduleMode scheduleMode;
+            [NativeDisableUnsafePtrRestriction] public ScheduleFlags scheduleFlags;
             [NativeDisableUnsafePtrRestriction] public ME.BECS.Tests.Tests_Aspects.TestJobFor jobData;
             [NativeDisableUnsafePtrRestriction] public CommandBuffer* buffer;
             [NativeDisableContainerSafetyRestriction] public ME.BECS.Tests.Test2Aspect a0;
@@ -1011,7 +1011,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries+Job1
                 CacheJobDebugData1.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData1* data = (JobDebugData1*)CacheJobDebugData1.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1021,7 +1021,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData1.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries.Job1*)jobData;
                     data->buffer = buffer;
                     return data;
@@ -1032,7 +1032,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries_Static+TestSystem4+JobForComponents
                 CacheJobDebugData2.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData2* data = (JobDebugData2*)CacheJobDebugData2.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1042,7 +1042,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData2.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries_Static.TestSystem4.JobForComponents*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Tests.TestComponent>(buffer->state, buffer->worldId);
@@ -1055,7 +1055,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries+Job2Unsafe
                 CacheJobDebugData3.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData3* data = (JobDebugData3*)CacheJobDebugData3.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1065,7 +1065,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData3.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries.Job2Unsafe*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Tests.TestComponent>(buffer->state, buffer->worldId);
@@ -1078,7 +1078,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries+Job2
                 CacheJobDebugData4.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData4* data = (JobDebugData4*)CacheJobDebugData4.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1088,7 +1088,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData4.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries.Job2*)jobData;
                     data->buffer = buffer;
                     return data;
@@ -1099,7 +1099,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries+JobComponents
                 CacheJobDebugData5.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData5* data = (JobDebugData5*)CacheJobDebugData5.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1109,7 +1109,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData5.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries.JobComponents*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Tests.TestComponent>(buffer->state, buffer->worldId);
@@ -1122,7 +1122,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries+Job1Unsafe
                 CacheJobDebugData6.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData6* data = (JobDebugData6*)CacheJobDebugData6.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1132,7 +1132,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData6.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries.Job1Unsafe*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Tests.TestComponent>(buffer->state, buffer->worldId);
@@ -1145,7 +1145,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Aspects+TestDestroyJobFor
                 CacheJobDebugData7.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData7* data = (JobDebugData7*)CacheJobDebugData7.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1155,7 +1155,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData7.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Aspects.TestDestroyJobFor*)jobData;
                     data->buffer = buffer;
                     data->c0 = buffer->state.ptr->components.GetRW<ME.BECS.Tests.TestTargetComponent>(buffer->state, buffer->worldId);
@@ -1169,7 +1169,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Aspects+TestSetJob
                 CacheJobDebugData8.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData8* data = (JobDebugData8*)CacheJobDebugData8.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1179,7 +1179,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData8.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Aspects.TestSetJob*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Tests.Test2Aspect>(buffer->state);
@@ -1194,7 +1194,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries+TestA2Job
                 CacheJobDebugData9.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData9* data = (JobDebugData9*)CacheJobDebugData9.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1204,7 +1204,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData9.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries.TestA2Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Tests.TestAspect>(buffer->state);
@@ -1217,7 +1217,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Queries+TestA1Job
                 CacheJobDebugData10.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData10* data = (JobDebugData10*)CacheJobDebugData10.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1227,7 +1227,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData10.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Queries.TestA1Job*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Tests.TestAspect>(buffer->state);
@@ -1241,7 +1241,7 @@ namespace ME.BECS.Editor {
             { // ME.BECS.Tests.Tests_Aspects+TestJobFor
                 CacheJobDebugData11.cache.Data = default;
                 [BurstCompile]
-                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleMode scheduleMode) {
+                static void* Method(void* jobData, CommandBuffer* buffer, bool unsafeMode, ScheduleFlags scheduleFlags) {
                     JobDebugData11* data = (JobDebugData11*)CacheJobDebugData11.cache.Data;
                     if (data == null) {
                         if (unsafeMode == true) {
@@ -1251,7 +1251,7 @@ namespace ME.BECS.Editor {
                         }
                         CacheJobDebugData11.cache.Data = (System.IntPtr)data;
                     }
-                    data->scheduleMode = scheduleMode;
+                    data->scheduleFlags = scheduleFlags;
                     data->jobData = *(ME.BECS.Tests.Tests_Aspects.TestJobFor*)jobData;
                     data->buffer = buffer;
                     data->a0 = buffer->state.ptr->aspectsStorage.Initialize<ME.BECS.Tests.Test2Aspect>(buffer->state);

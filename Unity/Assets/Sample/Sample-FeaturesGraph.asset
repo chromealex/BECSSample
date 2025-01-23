@@ -177,7 +177,7 @@ MonoBehaviour:
       data:
         testConfig:
           sourceId: 6
-        count: 10000
+        count: 100
     - rid: 5898424070305480721
       type: {class: FilterEntitiesSystem, ns: Sample, asm: Sample}
       data: 
